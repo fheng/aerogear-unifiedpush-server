@@ -22,7 +22,7 @@ public class ProxyConfiguration {
         String proxyUser = System.getenv("HTTP_PROXY_USER");
         String proxyPass = System.getenv("HTTP_PROXY_PASS");
         String hostAskingForAuth = this.getRequestingHost();
-        if(hostAskingForAuth.equals(proxyHost)){
+        if(hostAskingForAuth.equals(proxyHost) && (! "".equals(proxyUser) && ! "".equals(proxyPass))){
           return new PasswordAuthentication(proxyUser,proxyPass.toCharArray());
         }
         return super.getPasswordAuthentication();
