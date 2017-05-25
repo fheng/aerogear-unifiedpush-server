@@ -24,7 +24,7 @@ fhBuildNode(['label': 'java-ubuntu']) {
     }
 
     stage('Build') {
-        sh "mvn -s ${env.M2_SETTINGS} clean verify -Ptest,dist -Dmaven.test.failure.ignore=false -Dups.ddl_value=update -DskipTests"
+        sh "mvn -s ${env.M2_SETTINGS} clean verify -Ptest,dist -Dups.ddl_value=update"
         def version = sh(returnStdout: true, script: "mvn help:evaluate -Dexpression=project.version | grep -v \"^\\[\" | tail -1 | cut -f1 -d\"-\"").trim()
 
         print version
