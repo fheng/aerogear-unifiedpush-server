@@ -32,15 +32,23 @@ import java.net.PasswordAuthentication;
 public class ProxyConfiguration {
 
     @PostConstruct
+    public void post(){
+        System.out.println("POST CONSTRUCT");
+    }
+
+    @PostConstruct
     public void setupAuth(){
         Authenticator.setDefault(new Authenticator() {
 
             @Override protected PasswordAuthentication getPasswordAuthentication() {
+                System.out.println("PROXY!!! Hit authenticator call one");
                 String proxyHost = System.getenv("HTTP_PROXY_HOST");
                 String proxyUser = System.getenv("HTTP_PROXY_USER");
                 String proxyPass = System.getenv("HTTP_PROXY_PASS");
                 String hostAskingForAuth = this.getRequestingHost();
+                System.out.println(hostAskingForAuth);
                 if(hostAskingForAuth.equals(proxyHost) && (! "".equals(proxyUser) && ! "".equals(proxyPass))){
+                    System.out.println("PROXY!!!  TWO " + "  " +  proxyHost + " "  + proxyPass + "   " +  proxyUser);
                     return new PasswordAuthentication(proxyUser,proxyPass.toCharArray());
                 }
                 return super.getPasswordAuthentication();
