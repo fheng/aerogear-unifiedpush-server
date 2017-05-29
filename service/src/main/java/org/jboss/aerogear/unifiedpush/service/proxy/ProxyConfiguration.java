@@ -32,15 +32,9 @@ import java.net.PasswordAuthentication;
 public class ProxyConfiguration {
 
     @PostConstruct
-    public void post(){
-
-        System.setProperty("jdk.http.auth.tunneling.disabledSchemes","");
-        System.out.println("POST CONSTRUCT");
-
-    }
-
-    @PostConstruct
     public void setupAuth(){
+        System.out.println("POST CONSTRUCT");
+        System.setProperty("jdk.http.auth.tunneling.disabledSchemes","");
         Authenticator.setDefault(new Authenticator() {
 
             @Override protected PasswordAuthentication getPasswordAuthentication() {
