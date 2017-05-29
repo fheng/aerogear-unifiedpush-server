@@ -33,7 +33,10 @@ public class ProxyConfiguration {
 
     @PostConstruct
     public void post(){
+
+        System.setProperty("jdk.http.auth.tunneling.disabledSchemes","");
         System.out.println("POST CONSTRUCT");
+
     }
 
     @PostConstruct
