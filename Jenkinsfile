@@ -27,14 +27,12 @@ fhBuildNode(['label': 'java-ubuntu']) {
         sh "mvn -s ${env.M2_SETTINGS} clean verify -Ptest,dist -Dups.ddl_value=update"
         def version = sh(returnStdout: true, script: "mvn help:evaluate -Dexpression=project.version | grep -v \"^\\[\" | tail -1 | cut -f1 -d\"-\"").trim()
 
-        print version
-
         sh "cp servers/auth-server/target/auth-server.war ./unifiedpush-auth-server-${version}-${env.BUILD_NUMBER}.war"
         sh "cp servers/ups-as7/target/ag-push.war ./unifiedpush-server-as7-${version}-${env.BUILD_NUMBER}.war"
 
-        writeFile file: "VERSION.txt", text: "${version}-${env.BUILD_NUMBER}"
+        def buildInfoFileName = writeBuildInfo('unifiedpush', "${version}-${env.BUILD_NUMBER}")
 
-        archiveArtifacts "unifiedpush-auth-server-*.war, unifiedpush-server-as7-*.war, dist/target/*.tar.gz, VERSION.txt"
+        archiveArtifacts "unifiedpush-auth-server-*.war, unifiedpush-server-as7-*.war, dist/target/*.tar.gz, ${buildInfoFileName}"
     }
 
 }
