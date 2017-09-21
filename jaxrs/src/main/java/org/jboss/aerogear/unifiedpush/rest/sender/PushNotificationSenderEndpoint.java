@@ -27,8 +27,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status;
 
-import com.qmino.miredot.annotations.BodyType;
-import com.qmino.miredot.annotations.ReturnType;
 import org.jboss.aerogear.unifiedpush.api.PushApplication;
 import org.jboss.aerogear.unifiedpush.message.PushMessageBatchDispatcher;
 import org.jboss.aerogear.unifiedpush.rest.EmptyJSON;
@@ -89,8 +87,6 @@ public class PushNotificationSenderEndpoint {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @BodyType("org.jboss.aerogear.unifiedpush.message.UnifiedPushMessage")
-    @ReturnType("org.jboss.aerogear.unifiedpush.rest.EmptyJSON")
     public Response send(final InternalUnifiedPushMessage message, @Context HttpServletRequest request) {
 
         final PushApplication pushApplication = loadPushApplicationWhenAuthorized(request);
@@ -144,8 +140,6 @@ public class PushNotificationSenderEndpoint {
     @Path("/batch")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @BodyType("java.util.List<org.jboss.aerogear.unifiedpush.message.UnifiedPushMessage>")
-    @ReturnType("org.jboss.aerogear.unifiedpush.rest.EmptyJSON")
     public Response send(final List<InternalUnifiedPushMessage> messages, @Context HttpServletRequest request) {
 
         final PushApplication pushApplication = loadPushApplicationWhenAuthorized(request);

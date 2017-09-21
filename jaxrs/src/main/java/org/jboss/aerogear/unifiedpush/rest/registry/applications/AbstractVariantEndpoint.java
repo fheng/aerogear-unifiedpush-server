@@ -16,7 +16,6 @@
  */
 package org.jboss.aerogear.unifiedpush.rest.registry.applications;
 
-import com.qmino.miredot.annotations.ReturnType;
 import org.jboss.aerogear.unifiedpush.api.PushApplication;
 import org.jboss.aerogear.unifiedpush.api.Variant;
 import org.jboss.aerogear.unifiedpush.rest.AbstractBaseEndpoint;
@@ -62,7 +61,6 @@ public abstract class AbstractVariantEndpoint extends AbstractBaseEndpoint {
     @Path("/{variantId}/reset")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @ReturnType("org.jboss.aerogear.unifiedpush.api.Variant")
     public Response resetSecret(@PathParam("variantId") String variantId) {
 
         Variant variant = variantService.findByVariantID(variantId);
@@ -92,7 +90,6 @@ public abstract class AbstractVariantEndpoint extends AbstractBaseEndpoint {
     @GET
     @Path("/{variantId}")
     @Produces(MediaType.APPLICATION_JSON)
-    @ReturnType("org.jboss.aerogear.unifiedpush.api.Variant")
     public Response findVariantById(@PathParam("variantId") String variantId) {
 
         Variant variant = variantService.findByVariantID(variantId);
@@ -114,7 +111,6 @@ public abstract class AbstractVariantEndpoint extends AbstractBaseEndpoint {
      */
     @DELETE
     @Path("/{variantId}")
-    @ReturnType("java.lang.Void")
     public Response deleteVariant(@PathParam("variantId") String variantId) {
 
         Variant variant = variantService.findByVariantID(variantId);

@@ -18,8 +18,6 @@ package org.jboss.aerogear.unifiedpush.rest.registry.installations;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.qmino.miredot.annotations.BodyType;
-import com.qmino.miredot.annotations.ReturnType;
 import org.jboss.aerogear.unifiedpush.api.Installation;
 import org.jboss.aerogear.unifiedpush.api.Variant;
 import org.jboss.aerogear.unifiedpush.api.validation.DeviceTokenValidator;
@@ -86,7 +84,6 @@ public class InstallationRegistrationEndpoint extends AbstractBaseEndpoint {
      */
     @OPTIONS
     @Path("{token: .*}")
-    @ReturnType("java.lang.Void")
     public Response crossOriginForInstallations(
             @Context HttpHeaders headers,
             @PathParam("token") String token) {
@@ -109,7 +106,6 @@ public class InstallationRegistrationEndpoint extends AbstractBaseEndpoint {
      * @statuscode 200 Successful response for your request
      */
     @OPTIONS
-    @ReturnType("java.lang.Void")
     public Response crossOriginForInstallations(@Context HttpHeaders headers) {
 
         return appendPreflightResponseHeaders(headers, Response.ok()).build();
@@ -158,7 +154,6 @@ public class InstallationRegistrationEndpoint extends AbstractBaseEndpoint {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @ReturnType("org.jboss.aerogear.unifiedpush.api.Installation")
     public Response registerInstallation(
             @DefaultValue("") @HeaderParam("x-ag-old-token") final String oldToken,
             Installation entity,
@@ -220,7 +215,6 @@ public class InstallationRegistrationEndpoint extends AbstractBaseEndpoint {
     @Path("/pushMessage/{id: .*}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @ReturnType("org.jboss.aerogear.unifiedpush.rest.EmptyJSON")
     public Response increasePushMessageReadCounter(@PathParam("id") String pushMessageId,
                            @Context HttpServletRequest request) {
 
@@ -265,7 +259,6 @@ public class InstallationRegistrationEndpoint extends AbstractBaseEndpoint {
      */
     @DELETE
     @Path("{token: .*}")
-    @ReturnType("java.lang.Void")
     public Response unregisterInstallations(
             @PathParam("token") String token,
             @Context HttpServletRequest request) {
@@ -343,8 +336,6 @@ public class InstallationRegistrationEndpoint extends AbstractBaseEndpoint {
     @Path("/importer")
     @Consumes(MediaType.MULTIPART_FORM_DATA)
     @Produces(MediaType.APPLICATION_JSON)
-    @BodyType("org.jboss.aerogear.unifiedpush.rest.registry.installations.ImporterForm")
-    @ReturnType("org.jboss.aerogear.unifiedpush.rest.EmptyJSON")
     public Response importDevice(
             @MultipartForm
             ImporterForm form,

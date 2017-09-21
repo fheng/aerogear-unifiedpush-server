@@ -16,7 +16,6 @@
  */
 package org.jboss.aerogear.unifiedpush.rest.registry.applications;
 
-import com.qmino.miredot.annotations.ReturnType;
 import org.jboss.aerogear.unifiedpush.api.PushApplication;
 import org.jboss.aerogear.unifiedpush.api.SimplePushVariant;
 
@@ -52,7 +51,6 @@ public class SimplePushVariantEndpoint extends AbstractVariantEndpoint {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @ReturnType("org.jboss.aerogear.unifiedpush.api.SimplePushVariant")
     public Response registerSimplePushVariant(
             SimplePushVariant simplePushVariant,
             @PathParam("pushAppID") String pushApplicationID,
@@ -92,7 +90,6 @@ public class SimplePushVariantEndpoint extends AbstractVariantEndpoint {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @ReturnType("java.util.Set<org.jboss.aerogear.unifiedpush.api.SimplePushVariant>")
     public Response listAllSimplePushVariationsForPushApp(@PathParam("pushAppID") String pushApplicationID) {
 
         final PushApplication application = getSearch().findByPushApplicationIDForDeveloper(pushApplicationID);
@@ -114,7 +111,6 @@ public class SimplePushVariantEndpoint extends AbstractVariantEndpoint {
     @Path("/{simplePushID}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @ReturnType("java.lang.Void")
     public Response updateSimplePushVariation(
             @PathParam("pushAppID") String id,
             @PathParam("simplePushID") String simplePushID,

@@ -29,7 +29,6 @@ import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 
-import com.qmino.miredot.annotations.ReturnType;
 import org.jboss.aerogear.unifiedpush.service.dashboard.Application;
 import org.jboss.aerogear.unifiedpush.service.dashboard.ApplicationVariant;
 import org.jboss.aerogear.unifiedpush.service.dashboard.DashboardData;
@@ -48,7 +47,6 @@ public class DashboardEndpoint {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @ReturnType("org.jboss.aerogear.unifiedpush.service.dashboard.DashboardData")
     public Response totalApplications(@Context HttpServletRequest request) {
         final DashboardData dataForUser =  service.getSearchService().loadDashboardData();
 
@@ -63,7 +61,6 @@ public class DashboardEndpoint {
     @GET
     @Path("/warnings")
     @Produces(MediaType.APPLICATION_JSON)
-    @ReturnType("java.util.List<org.jboss.aerogear.unifiedpush.service.dashboard.ApplicationVariant>")
     public Response getVariantsWithWarnings(@Context HttpServletRequest request) {
         final List<ApplicationVariant> variantsWithWarnings = service.getSearchService().getVariantsWithWarnings();
 
@@ -79,7 +76,6 @@ public class DashboardEndpoint {
     @GET
     @Path("/active")
     @Produces(MediaType.APPLICATION_JSON)
-    @ReturnType("java.util.List<org.jboss.aerogear.unifiedpush.service.dashboard.Application>")
     public Response getLatestActivity(@QueryParam("count") @DefaultValue("3") int count, @Context HttpServletRequest request) {
         final List<Application> latestActivity = service.getSearchService().getLatestActivity(count);
 

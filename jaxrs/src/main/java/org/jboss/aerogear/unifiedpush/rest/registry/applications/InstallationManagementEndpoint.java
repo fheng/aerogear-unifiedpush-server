@@ -38,8 +38,6 @@ import org.jboss.aerogear.unifiedpush.service.impl.SearchManager;
 import org.jboss.resteasy.spi.Link;
 import org.jboss.resteasy.spi.LinkHeader;
 
-import com.qmino.miredot.annotations.ReturnType;
-
 
 @Path("/applications/{variantID}/installations/")
 public class InstallationManagementEndpoint {
@@ -68,7 +66,6 @@ public class InstallationManagementEndpoint {
      */
     @GET
     @Produces(MediaType.APPLICATION_JSON)
-    @ReturnType("java.util.List<org.jboss.aerogear.unifiedpush.api.Installation>")
     public Response findInstallations(@PathParam("variantID") String variantId,
                                       @QueryParam("page") Integer page,
                                       @QueryParam("per_page") Integer pageSize,
@@ -139,7 +136,6 @@ public class InstallationManagementEndpoint {
     @GET
     @Path("/{installationID}")
     @Produces(MediaType.APPLICATION_JSON)
-    @ReturnType("org.jboss.aerogear.unifiedpush.api.Installation")
     public Response findInstallation(@PathParam("variantID") String variantId, @PathParam("installationID") String installationId) {
 
         Installation installation = clientInstallationService.findById(installationId);
@@ -165,7 +161,6 @@ public class InstallationManagementEndpoint {
     @Path("/{installationID}")
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON)
-    @ReturnType("java.lang.Void")
     public Response updateInstallation(Installation entity, @PathParam("variantID") String variantId, @PathParam("installationID") String installationId) {
 
         Installation installation = clientInstallationService.findById(installationId);
@@ -192,7 +187,6 @@ public class InstallationManagementEndpoint {
     @DELETE
     @Path("/{installationID}")
     @Produces(MediaType.APPLICATION_JSON)
-    @ReturnType("java.lang.Void")
     public Response removeInstallation(@PathParam("variantID") String variantId, @PathParam("installationID") String installationId) {
 
         Installation installation = clientInstallationService.findById(installationId);
