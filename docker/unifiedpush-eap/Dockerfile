@@ -1,5 +1,5 @@
 # Use latest rhmap/eap image as the base
-FROM docker.io/rhmap/eap:latest
+FROM docker.io/rhmap/eap:PR34
 
 RUN mkdir -p $JBOSS_HOME/standalone/data && \
     mkdir -p $JBOSS_HOME/standalone/tmp/vfs/temp && \
