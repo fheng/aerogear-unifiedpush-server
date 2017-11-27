@@ -69,20 +69,4 @@ fhBuildNode(['label': 'java-ubuntu']) {
         ]
         fhcapComponentUpdate(updateParams)
     }
-
-}
-
-node('openshift') {
-    stage('Build Image') {
-        unstash "docker-ups"
-
-        final Map params = [
-                fromDir: './docker/unifiedpush-eap',
-                buildConfigName: 'aerogear-ups',
-                imageRepoSecret: 'dockerhub',
-                outputImage: "docker.io/${DOCKER_HUB_ORG}/${DOCKER_HUB_REPO}:${version}-${build}"
-        ]
-
-        buildWithDockerStrategy params
-    }
 }
