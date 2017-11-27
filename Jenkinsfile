@@ -68,7 +68,6 @@ fhBuildNode(['label': 'java-ubuntu']) {
                 changeUrl: CHANGE_URL
         ]
         fhcapComponentUpdate(updateParams)
-        fhCoreOpenshiftTemplatesComponentUpdate(updateParams)
     }
 
 }
