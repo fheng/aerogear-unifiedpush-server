@@ -22,11 +22,6 @@ module.exports = function (grunt) {
     tmp: '.tmp'
   };
 
-  try {
-    yeomanConfig.app = require('./bower.json').appPath || yeomanConfig.app;
-  } catch (e) {
-  }
-
   grunt.initConfig({
     yeoman: yeomanConfig,
     local: {
@@ -344,13 +339,6 @@ module.exports = function (grunt) {
         }
       }
     },
-    bower: {
-      install: {
-        options: {
-          targetDir: 'app/bower-components/'
-        }
-      }
-    },
     compress: {
       main: {
         options: {
@@ -429,7 +417,6 @@ module.exports = function (grunt) {
   ]);
 
   grunt.registerTask('dist', [
-    'bower:install',
     'default'
   ]);
 

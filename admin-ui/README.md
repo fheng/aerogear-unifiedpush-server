@@ -9,12 +9,11 @@ Pre-reqs:
 
 Once the pre-reqs have been taken care of, run:
 
-    npm install -g grunt-cli bower
+    npm install -g yarn
+
+    yarn global add grunt-cli
     
-    npm install
-
-    bower install
-
+    yarn
 
 Run:
 
